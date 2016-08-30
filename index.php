@@ -1,4 +1,10 @@
 <?php 
+	/****************************************************************************************
+	
+		Just a simple web proxy written in PHP that can allow you to bypass Imdb.com content
+		T.toosi
+	
+	*****************************************************************************************/
 	function strposa($haystack, $needles=array(), $offset=0) {
 			$chr = array();
 			foreach($needles as $needle) {
