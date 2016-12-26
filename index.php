@@ -17,15 +17,16 @@
 	
 	$method		= $_SERVER['REQUEST_METHOD'];
 	$domainURL	= 'http://www.imdb.com';
-	$url 		= $_GET['url'] ?? null;
+	$url 		= isset($_GET['url']) ? $_GET['url'] : null;
     $headers	= getallheaders();
-	if( strposa($url, ['css','jpg','png','js'])  ) $domainURL	= 'http://ia.media-imdb.com';
 
+	if( strposa($url, ['css','jpg','png','js'])  ) $domainURL	= 'http://ia.media-imdb.com';
     foreach ( $headers as $key => $value){
-      if($key == 'Host')
+      if($key == 'Host' || $key== 'Accept-Encoding')
         continue;
       $headers_str[]=$key.":".$value;
     }
+
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $domainURL . '/' . $url);
     if( $method !== 'GET') {
@@ -54,7 +55,7 @@
     curl_close($ch);
     header('Content-Type: '.$contentType);
 	
-	$result = str_replace('http://ia.media-imdb.com', '', $result);
+	$result = str_replace('http://ia.media-imdb.com', '/tst/', $result);
 	$result = str_replace('http://www.imdb.com', '', $result);
 	$result = str_replace('?pf', '/?pf', $result);
 	$result = str_replace('<head>', '<head><style>#supertab {display: none;}</style>', $result);
