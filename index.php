@@ -55,7 +55,7 @@
     curl_close($ch);
     header('Content-Type: '.$contentType);
 	
-	$result = str_replace('http://ia.media-imdb.com', '/tst/', $result);
+	$result = str_replace('http://ia.media-imdb.com', '', $result);
 	$result = str_replace('http://www.imdb.com', '', $result);
 	$result = str_replace('?pf', '/?pf', $result);
 	$result = str_replace('<head>', '<head><style>#supertab {display: none;}</style>', $result);
