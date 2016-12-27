@@ -21,7 +21,7 @@
 
     $headers	= getallheaders();
 	
-	if( strposa($url, ['css','jpg','png','js','html'])  ) $domainURL	= 'http://ia.media-imdb.com';
+	if( strposa($url, ['css','jpg','png','js','html', 'png'])  ) $domainURL	= 'http://ia.media-imdb.com';
 
     foreach ( $headers as $key => $value){
       if($key == 'Host' || $key== 'Accept-Encoding')
