@@ -65,17 +65,3 @@
 	$result = str_replace('<head>', '<head><style>#supertab {display: none;}</style>', $result);
     echo $result;
 ?>
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers_str );
-    $result = curl_exec($ch);
-	$contentType = curl_getinfo($ch,CURLINFO_CONTENT_TYPE);
-    curl_close($ch);
-    header('Content-Type: '.$contentType);
-	
-	$result = str_replace('http://ia.media-imdb.com', '', $result);
-	$result = str_replace('https://ia.media-imdb.com', '', $result);
-	$result = str_replace('http://www.imdb.com', '', $result);
-	$result = str_replace('?pf', '/?pf', $result);
-	$result = str_replace('<head>', '<head><style>#supertab {display: none;}</style>', $result);
-    echo $result;
-?>
